@@ -53,8 +53,6 @@ public class Car {
     @Size(max = 1000)
     private String description;
 
-    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private PurchasedCar purchasedCar;
 
 
 

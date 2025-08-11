@@ -2,6 +2,7 @@ package com.hcltech.car_purchase_service.service.impl;
 
 import com.hcltech.car_purchase_service.dto.PurchasedCarDto;
 import com.hcltech.car_purchase_service.entity.PurchasedCar;
+import com.hcltech.car_purchase_service.mapper.PurchasedCarMapper;
 import com.hcltech.car_purchase_service.repository.PurchasedCerREpository;
 import com.hcltech.car_purchase_service.service.PurchesedCarService;
 import lombok.RequiredArgsConstructor;

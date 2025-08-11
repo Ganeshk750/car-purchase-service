@@ -2,6 +2,8 @@ package com.hcltech.car_purchase_service.service.impl;
 
 import com.hcltech.car_purchase_service.dto.PersonDto;
 import com.hcltech.car_purchase_service.entity.Person;
+import com.hcltech.car_purchase_service.enums.Role;
+import com.hcltech.car_purchase_service.mapper.PersonMapper;
 import com.hcltech.car_purchase_service.repository.PersonRepository;
 import com.hcltech.car_purchase_service.service.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -23,13 +25,14 @@ public class PersonServiceImpl implements PersonService {
     }
     @Override
     public PersonDto getOne(Long id){
-        return personMapper.toDto(repository.findById(id).orElseThrow(() -> new RuntimeException("not found")));
+        System.out.println("get");
+        PersonDto found = personMapper.toDto(repository.findById(id).orElseThrow(() -> new RuntimeException("not found")));
+        System.out.println(found);
+        return found;
     }
     @Override
     public PersonDto add(PersonDto personDto){
-        System.out.println(personMapper.toEntity(personDto));
         Person save = repository.save(personMapper.toEntity(personDto));
-
         return personMapper.toDto(save);
     }
     @Override
@@ -53,7 +56,7 @@ public class PersonServiceImpl implements PersonService {
         return "Person with id: "+id+" is not found";
     }
 @Override
-public List<PersonDto> withRole(String role){
+public List<PersonDto> withRole(Role role){
 
       return personMapper.toDtoList(repository.findByRole(role));
     }

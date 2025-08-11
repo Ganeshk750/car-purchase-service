@@ -1,6 +1,7 @@
 package com.hcltech.car_purchase_service.controller;
 
 import com.hcltech.car_purchase_service.dto.PersonDto;
+import com.hcltech.car_purchase_service.enums.Role;
 import com.hcltech.car_purchase_service.service.PersonService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -22,23 +23,27 @@ public class PersonController {
         List<PersonDto> all = service.getAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getOne(@PathVariable Long id){
-        PersonDto one = service.getOne(id);
-        return new ResponseEntity<>(one, HttpStatus.OK);
+    @GetMapping("/getOne/{id}")
+    public ResponseEntity<?>getOne(@PathVariable Long id){
+        PersonDto personDto = service.getOne(id);
+        return new ResponseEntity<>(personDto,HttpStatus.OK);
     }
-
+    @GetMapping("/getBy/{role}")
+    public ResponseEntity<?> byrole(@PathVariable Role role){
+        List<PersonDto> withRole = service.withRole(role);
+        return new ResponseEntity<>(withRole,HttpStatus.OK);
+    }
     @PostMapping("/add")
     public ResponseEntity<?> add(@Valid @RequestBody PersonDto personDto){
+        System.out.println("add");
         PersonDto add = service.add(personDto);
         return new ResponseEntity<>(add, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id,@Valid @RequestBody PersonDto personDto){
-//        PersonDto update = service.update(id, personDto);
-        return new ResponseEntity<>("update", HttpStatus.OK);
+        PersonDto update = service.update(id, personDto);
+        return new ResponseEntity<>(update, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -46,9 +51,4 @@ public class PersonController {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{role}")
-    public ResponseEntity<?> withRole(@PathVariable String role){
-        return new ResponseEntity<>(service.withRole(role),HttpStatus.OK);
-
-    }
 }

@@ -2,6 +2,7 @@ package com.hcltech.car_purchase_service.service;
 
 import com.hcltech.car_purchase_service.dto.PersonDto;
 import com.hcltech.car_purchase_service.entity.Person;
+import com.hcltech.car_purchase_service.enums.Role;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface PersonService {
 
     String delete(Long id);
 
-    List<PersonDto> withRole(String role);
+    List<PersonDto> withRole(Role role);
 }

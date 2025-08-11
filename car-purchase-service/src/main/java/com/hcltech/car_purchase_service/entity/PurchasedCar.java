@@ -24,25 +24,11 @@ public class PurchasedCar {
     @NotBlank(message = "Payment method is required")
     @Size(max = 50)
     private String paymentMethod; // e.g., Cash, Bank Transfer, UPI
-
     private boolean isDelivered;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "buyer_id")
-    private Person buyer;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seller_id")
-    private Person seller;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "car_id")
-    private Car car;
-
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "delivery_address_id")
-    private Address deliveryAddress;
+    private String  buyer;
+    private String seller;
+    private String car;
+    private String deliveryAddress;
 
 
 

@@ -17,6 +17,5 @@ public class CarDto {
     private String location;       // where the car is available
     private boolean isAvailable=false;   // true if still for sale
     private String description;
-    private PurchasedCar purchasedCar;
 }
 

@@ -29,17 +29,4 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private Role role;
     private boolean isVerified;
-    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Address> addresses;
-
-
-    @OneToMany(mappedBy = "buyer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PurchasedCar> purchasedCarsAsBuyer;
-
-    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PurchasedCar> purchasedCarsAsSeller;
-
-
-
-
 }

@@ -13,6 +13,10 @@ C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\jav
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\entity\PurchasedCar.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\enums\Role.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\exception\GlobalExceptionHandler.java
+C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\mapper\AddressMapper.java
+C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\mapper\CarMapper.java
+C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\mapper\PersonMapper.java
+C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\mapper\PurchasedCarMapper.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\repository\AddressRepository.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\repository\CarRepository.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\repository\PersonRepository.java

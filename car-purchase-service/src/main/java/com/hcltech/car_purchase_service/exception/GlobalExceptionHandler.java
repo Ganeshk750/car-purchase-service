@@ -18,11 +18,11 @@ import java.util.Map;
 public class GlobalExceptionHandler {
     @ExceptionHandler(OpenApiResourceNotFoundException.class)
     public ResponseEntity<String>handleResourceNotFound(OpenApiResourceNotFoundException ex){
-        return new ResponseEntity<>("from gloable ", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String>handleGeneralException(Exception ex){
-        return new ResponseEntity<>("Something went wrong",HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("Something went wrong"+ex.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(BadRequestException.class)

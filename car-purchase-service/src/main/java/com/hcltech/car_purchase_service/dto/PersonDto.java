@@ -16,7 +16,4 @@ public class PersonDto {
     private String phone_number;
     private Role role;
     private boolean isVerified;
-    private List<AddressDto> addressDtoList;
-    private List<PurchasedCarDto> purchasedCarsAsBuyer;
-    private List<PurchasedCarDto> purchasedCarsAsSeller;
 }

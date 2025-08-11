@@ -1,10 +1,6 @@
 package com.hcltech.car_purchase_service.controller;
-
 import com.hcltech.car_purchase_service.dto.CarDto;
-import com.hcltech.car_purchase_service.entity.Car;
-import com.hcltech.car_purchase_service.entity.Person;
 import com.hcltech.car_purchase_service.service.CarService;
-import com.hcltech.car_purchase_service.service.PersonService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +20,7 @@ public class CarController {
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("getOne/{id}")
     public ResponseEntity<?> getOne(@PathVariable Long id){
         CarDto car = service.getById(id);
         return new ResponseEntity<>(car, HttpStatus.OK);

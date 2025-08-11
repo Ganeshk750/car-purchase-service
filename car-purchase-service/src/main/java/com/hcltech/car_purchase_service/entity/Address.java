@@ -33,12 +33,4 @@ public class Address {
     @NotBlank(message = "Country is required")
     @Size(max = 100, message = "Country name must be less than 100 characters")
     private String country;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Person person;
-
-    @OneToOne(mappedBy = "deliveryAddress", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private PurchasedCar purchasedCar;
-
-
 }
