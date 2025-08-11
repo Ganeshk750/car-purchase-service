@@ -1,32 +1,32 @@
 package com.hcltech.car_purchase_service.service.impl;
 
+import com.hcltech.car_purchase_service.dto.AddressDto;
 import com.hcltech.car_purchase_service.entity.Address;
+import com.hcltech.car_purchase_service.mapper.AddressMapper;
 import com.hcltech.car_purchase_service.repository.AddressRepository;
 import com.hcltech.car_purchase_service.service.AddressService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
-
     @Autowired
     private final AddressRepository repository;
-
-
+    private final AddressMapper addressMapper;
     @Override
-    public Address getById(Long id){
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Address not available for this id: " + id));
+    public AddressDto getById(Long id){
+        return addressMapper.toDto(repository.findById(id).orElseThrow(() -> new RuntimeException("Address not available for this id: " + id)));
     }
 
     @Override
-    public Address updateById(Long id, Address address){
+    public AddressDto updateById(Long id, AddressDto addressDto){
         Address address1 = repository.findById(id).orElseThrow(() -> new RuntimeException("Address not available for this id: " + id));
         if (address1!=null) {
-            address1=address;
+            address1=addressMapper.toEntity(addressDto);
             address1.setId(id);
-            return repository.save(address1);
+            return addressMapper.toDto(repository.save(address1));
         }else {
             return null;
         }
@@ -45,7 +45,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address add(Address address){
-        return repository.save(address);
+    public AddressDto add(AddressDto addressDto){
+        return addressMapper.toDto(repository.save(addressMapper.toEntity(addressDto)));
     }
 }

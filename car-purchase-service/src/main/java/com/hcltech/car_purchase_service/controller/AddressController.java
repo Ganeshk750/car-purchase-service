@@ -1,5 +1,6 @@
 package com.hcltech.car_purchase_service.controller;
 
+import com.hcltech.car_purchase_service.dto.AddressDto;
 import com.hcltech.car_purchase_service.entity.Address;
 import com.hcltech.car_purchase_service.service.AddressService;
 import lombok.AllArgsConstructor;
@@ -22,14 +23,14 @@ public class AddressController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody Address address){
-        return new ResponseEntity<>( service.add(address), HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody AddressDto addressDto){
+        return new ResponseEntity<>( service.add(addressDto), HttpStatus.OK);
     }
 
 
     @PutMapping("/update={id}")
-    public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody Address address){
-        return new ResponseEntity<>( service.updateById(id,address), HttpStatus.OK);
+    public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody AddressDto addressDto){
+        return new ResponseEntity<>( service.updateById(id,addressDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete={id}")

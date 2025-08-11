@@ -5,9 +5,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
-@Table(name="user_details")
+@Table(name="person")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +23,8 @@ public class Person {
     @NotBlank(message = "Email is required")
     @Email(message = "Email Should be valid")
     private String email;
-    private String address;
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Address> addresses;
     @Pattern(regexp = "^[0-9]{10}$",message = "Phone number must be 10 digits")
     private String phone_number;
     @NotNull(message = "Role is required")

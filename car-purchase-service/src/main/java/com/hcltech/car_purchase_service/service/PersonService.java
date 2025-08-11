@@ -1,20 +1,20 @@
 package com.hcltech.car_purchase_service.service;
 
+import com.hcltech.car_purchase_service.dto.PersonDto;
 import com.hcltech.car_purchase_service.entity.Person;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface PersonService {
-    List<Person> getAll();
+    List<PersonDto> getAll();
 
-    Person getOne(Long id);
+    PersonDto getOne(Long id);
 
-    Person add(Person person);
+    PersonDto add(PersonDto personDto);
 
-    Person update(Long id, Person person);
+    PersonDto update(Long id, PersonDto personDto);
 
     String delete(Long id);
 
-    Optional<Person> withRole(String role);
+    List<PersonDto> withRole(String role);
 }
