@@ -1,0 +1,49 @@
+package com.hcltech.car_purchase_service.controller;
+
+import com.hcltech.car_purchase_service.entity.Car;
+import com.hcltech.car_purchase_service.entity.Person;
+import com.hcltech.car_purchase_service.service.CarService;
+import com.hcltech.car_purchase_service.service.PersonService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+@RestController
+@RequestMapping("/car")
+@AllArgsConstructor
+public class CarController {
+    @Autowired
+    private final CarService service;
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAll(){
+        List<Car> all = service.getAll();
+        return new ResponseEntity<>(all, HttpStatus.OK);
+    }
+
+    @GetMapping("/getOne={id}")
+    public ResponseEntity<?> getOne(@PathVariable Long id){
+        Car car = service.getById(id);
+        return new ResponseEntity<>(car, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<?> add(@RequestBody Car car){
+        Car car1 = service.add(car);
+        return new ResponseEntity<>(car1, HttpStatus.OK);
+    }
+
+    @PutMapping("/update={id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Car car){
+        Car car1 = service.updateById(id, car);
+        return new ResponseEntity<>(car1, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete={id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        return new ResponseEntity<>(service.deleteById(id), HttpStatus.OK);
+    }
+
+}
