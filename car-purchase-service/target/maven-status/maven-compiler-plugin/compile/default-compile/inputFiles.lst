@@ -6,14 +6,13 @@ C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\jav
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\dto\AddressDto.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\dto\CarDto.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\dto\PersonDto.java
+C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\dto\PurchasedCarDto.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\entity\Address.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\entity\Car.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\entity\Person.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\entity\PurchasedCar.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\enums\Role.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\exception\GlobalExceptionHandler.java
-C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\mapper\AddressMapper.java
-C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\mapper\PersonMapper.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\repository\AddressRepository.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\repository\CarRepository.java
 C:\JAVA\Spring\New folder\car-purchase-service\car-purchase-service\src\main\java\com\hcltech\car_purchase_service\repository\PersonRepository.java

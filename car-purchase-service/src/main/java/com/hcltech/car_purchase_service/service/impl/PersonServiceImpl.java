@@ -2,7 +2,6 @@ package com.hcltech.car_purchase_service.service.impl;
 
 import com.hcltech.car_purchase_service.dto.PersonDto;
 import com.hcltech.car_purchase_service.entity.Person;
-import com.hcltech.car_purchase_service.mapper.PersonMapper;
 import com.hcltech.car_purchase_service.repository.PersonRepository;
 import com.hcltech.car_purchase_service.service.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,9 @@ public class PersonServiceImpl implements PersonService {
     }
     @Override
     public PersonDto add(PersonDto personDto){
+        System.out.println(personMapper.toEntity(personDto));
         Person save = repository.save(personMapper.toEntity(personDto));
+
         return personMapper.toDto(save);
     }
     @Override

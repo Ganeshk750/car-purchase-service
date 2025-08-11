@@ -1,9 +1,10 @@
 package com.hcltech.car_purchase_service.service.impl;
 
+import com.hcltech.car_purchase_service.dto.CarDto;
 import com.hcltech.car_purchase_service.entity.Car;
+import com.hcltech.car_purchase_service.mapper.CarMapper;
 import com.hcltech.car_purchase_service.repository.CarRepository;
 import com.hcltech.car_purchase_service.service.CarService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +17,25 @@ import java.util.List;
 public class CarServiceImpl implements CarService {
     @Autowired
     private final CarRepository repository;
+    @Autowired
+    private CarMapper carMapper;
 
     @Override
-    public List<Car> getAll(){
-        return repository.findAll();
+    public List<CarDto> getAll(){
+        return carMapper.toDtoList(repository.findAll());
     }
     @Override
-    public Car getById(Long id){
-        return repository.findById(id).orElseThrow(() -> new OpenApiResourceNotFoundException("No car found with id: " + id));
+    public CarDto getById(Long id){
+        return carMapper.toDto(repository.findById(id).orElseThrow(() -> new OpenApiResourceNotFoundException("No car found with id: " + id)));
     }
 
     @Override
-    public Car updateById(Long id, Car car){
+    public CarDto updateById(Long id, CarDto carDto){
         Car update = repository.findById(id).orElseThrow(() -> new OpenApiResourceNotFoundException("No car found with id: " + id));
         if(update!=null){
-            update=car;
+            update=carMapper.toEntity(carDto);
             update.setId(id);
-            return repository.save(car);
+            return carMapper.toDto(repository.save(update));
         }else {
             return null;
         }
@@ -40,8 +43,8 @@ public class CarServiceImpl implements CarService {
 
 
     @Override
-    public Car add(Car car){
-        return repository.save(car);
+    public CarDto add(CarDto carDto){
+        return carMapper.toDto(repository.save(carMapper.toEntity(carDto)));
     }
 
     @Override

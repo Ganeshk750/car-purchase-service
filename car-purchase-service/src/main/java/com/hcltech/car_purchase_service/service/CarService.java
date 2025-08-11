@@ -1,17 +1,18 @@
 package com.hcltech.car_purchase_service.service;
 
+import com.hcltech.car_purchase_service.dto.CarDto;
 import com.hcltech.car_purchase_service.entity.Car;
 
 import java.util.List;
 
 public interface CarService {
-    List<Car> getAll();
+    List<CarDto> getAll();
 
-    Car getById(Long id);
+    CarDto getById(Long id);
 
-    Car updateById(Long id, Car car);
+    CarDto updateById(Long id, CarDto carDto);
 
-    Car add(Car car);
+    CarDto add(CarDto carDto);
 
     String deleteById(Long id);
 }

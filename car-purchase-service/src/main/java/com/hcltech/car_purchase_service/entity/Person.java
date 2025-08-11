@@ -23,13 +23,23 @@ public class Person {
     @NotBlank(message = "Email is required")
     @Email(message = "Email Should be valid")
     private String email;
-    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Address> addresses;
     @Pattern(regexp = "^[0-9]{10}$",message = "Phone number must be 10 digits")
     private String phone_number;
     @NotNull(message = "Role is required")
     @Enumerated(EnumType.STRING)
     private Role role;
     private boolean isVerified;
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Address> addresses;
+
+
+    @OneToMany(mappedBy = "buyer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PurchasedCar> purchasedCarsAsBuyer;
+
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PurchasedCar> purchasedCarsAsSeller;
+
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.hcltech.car_purchase_service.controller;
 
+import com.hcltech.car_purchase_service.dto.PurchasedCarDto;
 import com.hcltech.car_purchase_service.entity.Person;
 import com.hcltech.car_purchase_service.entity.PurchasedCar;
 import com.hcltech.car_purchase_service.service.PersonService;
@@ -19,26 +20,26 @@ public class PurchasedCarController {
     private final PurchesedCarService service;
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll(){
-        List<PurchasedCar> all = service.getAll();
+        List<PurchasedCarDto> all = service.getAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
     @GetMapping("/getOne={id}")
     public ResponseEntity<?> getOne(@PathVariable Long id){
-        PurchasedCar purchasedCar = service.getbyId(id);
-        return new ResponseEntity<>(purchasedCar, HttpStatus.OK);
+        PurchasedCarDto purchasedCarDto = service.getbyId(id);
+        return new ResponseEntity<>(purchasedCarDto, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody PurchasedCar purchasedCar){
-        PurchasedCar purchasedCar1 = service.add(purchasedCar);
-        return new ResponseEntity<>(purchasedCar1, HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody PurchasedCarDto purchasedCarDto){
+        PurchasedCarDto purchasedCarDto1 = service.add(purchasedCarDto);
+        return new ResponseEntity<>(purchasedCarDto1, HttpStatus.OK);
     }
 
     @PutMapping("/update={id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody PurchasedCar purchasedCar){
-        PurchasedCar purchasedCar1 = service.updateById(id, purchasedCar);
-        return new ResponseEntity<>(purchasedCar1, HttpStatus.OK);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody PurchasedCarDto purchasedCarDto){
+        PurchasedCarDto purchasedCarDto1 = service.updateById(id, purchasedCarDto);
+        return new ResponseEntity<>(purchasedCarDto1, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete={id}")

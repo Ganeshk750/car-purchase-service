@@ -1,5 +1,6 @@
 package com.hcltech.car_purchase_service.controller;
 
+import com.hcltech.car_purchase_service.dto.CarDto;
 import com.hcltech.car_purchase_service.entity.Car;
 import com.hcltech.car_purchase_service.entity.Person;
 import com.hcltech.car_purchase_service.service.CarService;
@@ -19,29 +20,29 @@ public class CarController {
     private final CarService service;
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll(){
-        List<Car> all = service.getAll();
+        List<CarDto> all = service.getAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
-    @GetMapping("/getOne={id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getOne(@PathVariable Long id){
-        Car car = service.getById(id);
+        CarDto car = service.getById(id);
         return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody Car car){
-        Car car1 = service.add(car);
-        return new ResponseEntity<>(car1, HttpStatus.OK);
+    public ResponseEntity<?> add(@RequestBody CarDto carDto){
+        CarDto carDto1 = service.add(carDto);
+        return new ResponseEntity<>(carDto1, HttpStatus.OK);
     }
 
-    @PutMapping("/update={id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Car car){
-        Car car1 = service.updateById(id, car);
-        return new ResponseEntity<>(car1, HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody CarDto carDto){
+        CarDto carDto1 = service.updateById(id, carDto);
+        return new ResponseEntity<>(carDto1, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete={id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         return new ResponseEntity<>(service.deleteById(id), HttpStatus.OK);
     }

@@ -37,4 +37,8 @@ public class Address {
     @JoinColumn(name = "user_id")
     private Person person;
 
+    @OneToOne(mappedBy = "deliveryAddress", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private PurchasedCar purchasedCar;
+
+
 }
