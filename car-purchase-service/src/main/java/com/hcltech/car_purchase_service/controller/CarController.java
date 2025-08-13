@@ -2,6 +2,8 @@ package com.hcltech.car_purchase_service.controller;
 import com.hcltech.car_purchase_service.dto.CarDto;
 import com.hcltech.car_purchase_service.service.CarService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import java.util.List;
 @RequestMapping("/car")
 @AllArgsConstructor
 public class CarController {
+    private static final Logger logger = LoggerFactory.getLogger(CarController.class);
     @Autowired
     private final CarService service;
     @GetMapping("/getAll")
@@ -22,24 +25,28 @@ public class CarController {
 
     @GetMapping("getOne/{id}")
     public ResponseEntity<?> getOne(@PathVariable Long id){
+        logger.info("GET request received for Car ID: {}", id);
         CarDto car = service.getById(id);
         return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody CarDto carDto){
+        logger.info("POST request received to add Car: {}", carDto);
         CarDto carDto1 = service.add(carDto);
         return new ResponseEntity<>(carDto1, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody CarDto carDto){
+        logger.info("PUT request received to update Car ID: {} with data: {}", id, carDto);
         CarDto carDto1 = service.updateById(id, carDto);
         return new ResponseEntity<>(carDto1, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
+        logger.info("Delete request received for Car ID: {}", id);
         return new ResponseEntity<>(service.deleteById(id), HttpStatus.OK);
     }
 
