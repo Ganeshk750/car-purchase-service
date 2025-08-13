@@ -3,7 +3,7 @@ package com.hcltech.car_purchase_service.service.impl;
 import com.hcltech.car_purchase_service.dto.PersonDto;
 import com.hcltech.car_purchase_service.entity.Person;
 import com.hcltech.car_purchase_service.enums.Role;
-import com.hcltech.car_purchase_service.mapper.PersonMapper;
+import com.hcltech.car_purchase_service.mapper.PersonMappers;
 import com.hcltech.car_purchase_service.repository.PersonRepository;
 import com.hcltech.car_purchase_service.service.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService {
     private final PersonRepository repository;
-    private final PersonMapper personMapper;
+    private final PersonMappers personMapper;
 
 
     @Override
@@ -25,9 +25,7 @@ public class PersonServiceImpl implements PersonService {
     }
     @Override
     public PersonDto getOne(Long id){
-        System.out.println("get");
         PersonDto found = personMapper.toDto(repository.findById(id).orElseThrow(() -> new RuntimeException("not found")));
-        System.out.println(found);
         return found;
     }
     @Override

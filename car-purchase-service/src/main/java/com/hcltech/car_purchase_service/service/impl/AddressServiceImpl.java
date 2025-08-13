@@ -2,19 +2,23 @@ package com.hcltech.car_purchase_service.service.impl;
 
 import com.hcltech.car_purchase_service.dto.AddressDto;
 import com.hcltech.car_purchase_service.entity.Address;
-import com.hcltech.car_purchase_service.mapper.AddressMapper;
+import com.hcltech.car_purchase_service.mapper.AddressMappers;
 import com.hcltech.car_purchase_service.repository.AddressRepository;
 import com.hcltech.car_purchase_service.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
     @Autowired
     private final AddressRepository repository;
-    private final AddressMapper addressMapper;
+    @Autowired
+    private final AddressMappers addressMapper;
+
     @Override
     public AddressDto getById(Long id){
         return addressMapper.toDto(repository.findById(id).orElseThrow(() -> new RuntimeException("Address not available for this id: " + id)));
@@ -48,4 +52,9 @@ public class AddressServiceImpl implements AddressService {
     public AddressDto add(AddressDto addressDto){
         return addressMapper.toDto(repository.save(addressMapper.toEntity(addressDto)));
     }
+    @Override
+    public List<AddressDto> getAll(){
+        return addressMapper.toDtoList(repository.findAll());
+    }
+
 }

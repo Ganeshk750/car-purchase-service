@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name ="cars")
@@ -43,16 +45,14 @@ public class Car {
     @DecimalMin(value = "0.0", inclusive = true, message = "Price must be non-negative")
     private double price;
 
-    @NotBlank(message = "Location is required")
-    @Size(max = 100)
-    private String location;
-
     private boolean isAvailable = false;
 
     @NotBlank(message = "Description is required")
     @Size(max = 1000)
     private String description;
 
+    @OneToOne(mappedBy = "car",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private PurchasedCar purchasedCar;
 
 
 

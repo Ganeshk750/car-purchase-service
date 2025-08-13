@@ -14,8 +14,9 @@ public class CarDto {
     private String fuelType;       // e.g., Petrol, Diesel, Electric
     private String transmission;   // e.g., Manual, Automatic
     private double price;          // asking price
-    private String location;       // where the car is available
     private boolean isAvailable=false;   // true if still for sale
     private String description;
+    private PurchasedCarDto purchasedCar;
+
 }
 

@@ -13,8 +13,7 @@ public class PurchasedCarDto {
     private double purchasePrice;
     private String paymentMethod; // e.g., Cash, Bank Transfer, UPI
     private boolean isDelivered; // true if car has been handed over
-    private String buyer;
-    private String seller;
-    private String car;
-    private String deliveryAddress;
+    private Long buyerId;
+    private Long sellerId;
+    private Long carId;
 }

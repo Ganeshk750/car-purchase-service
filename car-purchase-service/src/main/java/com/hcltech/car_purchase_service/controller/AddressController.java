@@ -16,6 +16,10 @@ public class AddressController {
     @Autowired
     private  final AddressService service;
 
+    @GetMapping("/all")
+        public ResponseEntity<?>getAll(){return new ResponseEntity<>(service.getAll(),HttpStatus.OK);
+        }
+
     @GetMapping("/get={id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
         return new ResponseEntity<>( service.getById(id), HttpStatus.OK);

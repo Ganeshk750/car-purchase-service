@@ -2,9 +2,6 @@ package com.hcltech.car_purchase_service.dto;
 
 import com.hcltech.car_purchase_service.entity.Person;
 import com.hcltech.car_purchase_service.entity.PurchasedCar;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
@@ -15,4 +12,5 @@ public class AddressDto {
         private String state;
         private String postalCode;
         private String country;
+        private Long personId;
 }

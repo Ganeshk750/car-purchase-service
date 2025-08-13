@@ -1,6 +1,5 @@
 package com.hcltech.car_purchase_service.dto;
 
-import com.hcltech.car_purchase_service.entity.Address;
 import com.hcltech.car_purchase_service.entity.PurchasedCar;
 import com.hcltech.car_purchase_service.enums.Role;
 import lombok.Data;
@@ -16,4 +15,7 @@ public class PersonDto {
     private String phone_number;
     private Role role;
     private boolean isVerified;
+    private List<AddressDto> addresses;
+    private List<PurchasedCarDto> soldCars;
+    private List<PurchasedCarDto> purchasedCars;
 }

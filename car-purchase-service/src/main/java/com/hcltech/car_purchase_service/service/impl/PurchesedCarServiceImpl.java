@@ -2,7 +2,7 @@ package com.hcltech.car_purchase_service.service.impl;
 
 import com.hcltech.car_purchase_service.dto.PurchasedCarDto;
 import com.hcltech.car_purchase_service.entity.PurchasedCar;
-import com.hcltech.car_purchase_service.mapper.PurchasedCarMapper;
+import com.hcltech.car_purchase_service.mapper.PurchasedCarMappers;
 import com.hcltech.car_purchase_service.repository.PurchasedCerREpository;
 import com.hcltech.car_purchase_service.service.PurchesedCarService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class PurchesedCarServiceImpl implements PurchesedCarService {
     @Autowired
     private final PurchasedCerREpository repository;
     @Autowired
-    private PurchasedCarMapper purchasedCarMapper;
+    private PurchasedCarMappers purchasedCarMapper;
 
     @Override
     public List<PurchasedCarDto> getAll(){
