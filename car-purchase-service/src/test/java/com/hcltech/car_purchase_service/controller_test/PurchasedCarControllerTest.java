@@ -1,7 +1,7 @@
 package com.hcltech.car_purchase_service.controller_test;
 import com.hcltech.car_purchase_service.controller.PurchasedCarController;
 import com.hcltech.car_purchase_service.dto.PurchasedCarDto;
-import com.hcltech.car_purchase_service.service.PurchesedCarService;
+import com.hcltech.car_purchase_service.service.PurchasedCarService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 class PurchasedCarControllerTest {
 
     @Mock
-    private PurchesedCarService purchesedCarService;
+    private PurchasedCarService purchesedCarService;
 
     @InjectMocks
     private PurchasedCarController purchasedCarController;

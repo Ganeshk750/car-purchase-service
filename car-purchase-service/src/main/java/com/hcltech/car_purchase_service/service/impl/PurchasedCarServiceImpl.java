@@ -6,8 +6,7 @@ import com.hcltech.car_purchase_service.entity.PurchasedCar;
 import com.hcltech.car_purchase_service.mapper.PurchasedCarMapper;
 import com.hcltech.car_purchase_service.repository.PurchasedCerRepository;
 import com.hcltech.car_purchase_service.service.CarService;
-import com.hcltech.car_purchase_service.service.PurchesedCarService;
-import lombok.RequiredArgsConstructor;
+import com.hcltech.car_purchase_service.service.PurchasedCarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springdoc.api.OpenApiResourceNotFoundException;
@@ -18,7 +17,7 @@ import java.util.List;
 
 @Service
 
-public class PurchasedCarServiceImpl implements PurchesedCarService {
+public class PurchasedCarServiceImpl implements PurchasedCarService {
     private static final Logger logger = LoggerFactory.getLogger(PurchasedCarServiceImpl.class);
     @Autowired
     private final PurchasedCerRepository repository;

@@ -1,11 +1,10 @@
 package com.hcltech.car_purchase_service.service;
 
 import com.hcltech.car_purchase_service.dto.PurchasedCarDto;
-import com.hcltech.car_purchase_service.entity.PurchasedCar;
 
 import java.util.List;
 
-public interface PurchesedCarService {
+public interface PurchasedCarService {
     List<PurchasedCarDto> getAll();
 
     PurchasedCarDto add(PurchasedCarDto purchasedCarDto);

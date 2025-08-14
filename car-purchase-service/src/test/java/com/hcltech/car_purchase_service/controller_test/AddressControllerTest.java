@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.*;
         import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-
 class AddressControllerTest {
 
     @Mock

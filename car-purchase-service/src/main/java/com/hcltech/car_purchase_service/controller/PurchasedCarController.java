@@ -1,10 +1,7 @@
 package com.hcltech.car_purchase_service.controller;
 
 import com.hcltech.car_purchase_service.dto.PurchasedCarDto;
-import com.hcltech.car_purchase_service.entity.Person;
-import com.hcltech.car_purchase_service.entity.PurchasedCar;
-import com.hcltech.car_purchase_service.service.PersonService;
-import com.hcltech.car_purchase_service.service.PurchesedCarService;
+import com.hcltech.car_purchase_service.service.PurchasedCarService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +17,7 @@ import java.util.List;
 public class PurchasedCarController {
     private static final Logger logger = LoggerFactory.getLogger(PurchasedCarController.class);
     @Autowired
-    private final PurchesedCarService service;
+    private final PurchasedCarService service;
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll(){
         logger.info("Fetching all purchased cars");

@@ -1,11 +1,13 @@
 package com.hcltech.car_purchase_service.service_test;
 
+import com.hcltech.car_purchase_service.dto.CarDto;
 import com.hcltech.car_purchase_service.dto.PurchasedCarDto;
 import com.hcltech.car_purchase_service.entity.Car;
 import com.hcltech.car_purchase_service.entity.Person;
 import com.hcltech.car_purchase_service.entity.PurchasedCar;
 import com.hcltech.car_purchase_service.mapper.PurchasedCarMapper;
 import com.hcltech.car_purchase_service.repository.PurchasedCerRepository;
+import com.hcltech.car_purchase_service.service.CarService;
 import com.hcltech.car_purchase_service.service.impl.PurchasedCarServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,6 +23,8 @@ import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class PurchasedCarServiceTest {
+    @Mock
+    private CarService carService;
 
     @Mock
     private PurchasedCerRepository purchasedCerRepository;
@@ -74,9 +78,19 @@ public class PurchasedCarServiceTest {
     void testAddPurchasedCar() {
         PurchasedCarDto dto = new PurchasedCarDto();
         dto.setPaymentMethod("Cash");
+        dto.setCarId(1L);
 
         PurchasedCar entity = new PurchasedCar();
         entity.setPaymentMethod("Cash");
+
+        CarDto carDto = new CarDto();
+        carDto.setAvailable(true);
+
+
+        Mockito.when(carService.getById(dto.getCarId())).thenReturn(carDto);
+
+
+        Mockito.when(carService.updateById(dto.getCarId(), carDto)).thenReturn(carDto);
 
         Mockito.when(purchasedCarMapper.toEntity(dto)).thenReturn(entity);
         Mockito.when(purchasedCerRepository.save(entity)).thenReturn(entity);
@@ -87,6 +101,8 @@ public class PurchasedCarServiceTest {
         Assertions.assertNotNull(result);
         Assertions.assertEquals("Cash", result.getPaymentMethod());
     }
+
+
 
 
     @Test
