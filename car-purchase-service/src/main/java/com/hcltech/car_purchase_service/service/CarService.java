@@ -15,4 +15,10 @@ public interface CarService {
     CarDto add(CarDto carDto);
 
     String deleteById(Long id);
+
+    List<CarDto> getByModel(String model);
+
+    List<CarDto> getByYear(int year);
+
+    List<CarDto> getByPriceRange(double minPrice, double maxPrice);
 }

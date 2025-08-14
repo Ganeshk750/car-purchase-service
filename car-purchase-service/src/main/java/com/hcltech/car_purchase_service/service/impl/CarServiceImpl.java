@@ -2,10 +2,9 @@ package com.hcltech.car_purchase_service.service.impl;
 
 import com.hcltech.car_purchase_service.dto.CarDto;
 import com.hcltech.car_purchase_service.entity.Car;
-import com.hcltech.car_purchase_service.mapper.CarMappers;
+import com.hcltech.car_purchase_service.mapper.CarMapper;
 import com.hcltech.car_purchase_service.repository.CarRepository;
 import com.hcltech.car_purchase_service.service.CarService;
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springdoc.api.OpenApiResourceNotFoundException;
@@ -15,14 +14,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class CarServiceImpl implements CarService {
     private static final Logger logger = LoggerFactory.getLogger(CarServiceImpl.class);
-
     @Autowired
     private final CarRepository repository;
     @Autowired
-    private CarMappers carMapper;
+    private final CarMapper carMapper;
+    public CarServiceImpl(CarMapper carMapper, CarRepository repository) {
+        this.carMapper = carMapper;
+        this.repository = repository;
+    }
+
+
 
     @Override
     public List<CarDto> getAll(){
@@ -38,10 +41,9 @@ public class CarServiceImpl implements CarService {
         CarDto carDto= carMapper.toDto(repository.findById(id).orElseThrow(() -> {
             logger.error("car not found with ID: {}", id);
             return
-                    new OpenApiResourceNotFoundException("No car found with id: "
-                            + id);
+                    new OpenApiResourceNotFoundException("No car found with id: "+ id);
         }));
-        logger.info("Car fteched succefully with ID:{}",id);
+        logger.info("Car fetched successfully with ID:{}",id);
         return carDto;
     }
 
@@ -84,4 +86,19 @@ public class CarServiceImpl implements CarService {
             return "Not deleted";
         }
     }
+
+
+    @Override
+    public List<CarDto> getByModel(String model) {
+        return carMapper.toDtoList(repository.findByModel(model));
+    }
+@Override
+public List<CarDto> getByYear(int year) {
+        return carMapper.toDtoList(repository.findByManufactureYear(year));
+    }
+@Override
+public List<CarDto> getByPriceRange(double minPrice, double maxPrice) {
+        return carMapper.toDtoList(repository.findByPriceBetween(minPrice, maxPrice));
+    }
+
 }

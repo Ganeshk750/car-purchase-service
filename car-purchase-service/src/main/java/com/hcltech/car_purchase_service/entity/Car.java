@@ -51,8 +51,8 @@ public class Car {
     @Size(max = 1000)
     private String description;
 
-    @OneToOne(mappedBy = "car",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private PurchasedCar purchasedCar;
+    @OneToMany(mappedBy = "car",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<PurchasedCar> purchasedCar;
 
 
 

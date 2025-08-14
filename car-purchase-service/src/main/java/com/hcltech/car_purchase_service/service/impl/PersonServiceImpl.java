@@ -3,10 +3,11 @@ package com.hcltech.car_purchase_service.service.impl;
 import com.hcltech.car_purchase_service.dto.PersonDto;
 import com.hcltech.car_purchase_service.entity.Person;
 import com.hcltech.car_purchase_service.enums.Role;
-import com.hcltech.car_purchase_service.mapper.PersonMappers;
+import com.hcltech.car_purchase_service.mapper.PersonMapper;
 import com.hcltech.car_purchase_service.repository.PersonRepository;
 import com.hcltech.car_purchase_service.service.PersonService;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,18 +16,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService {
     private final PersonRepository repository;
-    private final PersonMappers personMapper;
+    private final PersonMapper personMapper;
 
 
     @Override
     public List<PersonDto> getAll(){
         return personMapper.toDtoList(repository.findAll());
-
     }
     @Override
     public PersonDto getOne(Long id){
-        PersonDto found = personMapper.toDto(repository.findById(id).orElseThrow(() -> new RuntimeException("not found")));
-        return found;
+        return personMapper.toDto(repository.findById(id).orElseThrow(() -> new OpenApiResourceNotFoundException("no person found for id:"+id)));
     }
     @Override
     public PersonDto add(PersonDto personDto){
@@ -35,14 +34,16 @@ public class PersonServiceImpl implements PersonService {
     }
     @Override
     public PersonDto update(Long id, PersonDto personDto){
-        Person found = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
+        Person found = repository.findById(id).orElseThrow(() -> new OpenApiResourceNotFoundException("no person found for id: "+id));
         if (found != null) {
             found=personMapper.toEntity(personDto);
             found.setId(id);
           return  personMapper.toDto(repository.save(found));
 
+        }else {
+            return null;
         }
-        return null;
+
     }
     @Override
     public String delete(Long id){

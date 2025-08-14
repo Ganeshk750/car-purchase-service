@@ -1,14 +1,13 @@
 package com.hcltech.car_purchase_service.service.impl;
-
-import com.hcltech.car_purchase_service.controller.PurchasedCarController;
 import com.hcltech.car_purchase_service.dto.AddressDto;
 import com.hcltech.car_purchase_service.entity.Address;
-import com.hcltech.car_purchase_service.mapper.AddressMappers;
+import com.hcltech.car_purchase_service.mapper.AddressMapper;
 import com.hcltech.car_purchase_service.repository.AddressRepository;
 import com.hcltech.car_purchase_service.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class AddressServiceImpl implements AddressService {
     @Autowired
     private final AddressRepository repository;
     @Autowired
-    private final AddressMappers addressMapper;
+    private final AddressMapper addressMapper;
 
     @Override
     public AddressDto getById(Long id){
@@ -30,8 +29,7 @@ public class AddressServiceImpl implements AddressService {
         return addressMapper.toDto(repository.findById(id).orElseThrow(() -> {
             logger.error("Address not found for ID:{}", id);
             return new
-            RuntimeException("Address not available for this id: "
-                    + id);
+                    OpenApiResourceNotFoundException("Address not available for this id:"+id);
         })
 
         );
@@ -43,7 +41,7 @@ public class AddressServiceImpl implements AddressService {
         Address address1 = repository.findById(id).orElseThrow(() ->{
             logger.error("Cannot update - address not found for ID:{}",id);
             return
-                    new RuntimeException("Address not available for this id: " + id);
+                    new OpenApiResourceNotFoundException("Address not available for this id: " + id);
         });
         if (address1!=null) {
             address1=addressMapper.toEntity(addressDto);
@@ -63,10 +61,10 @@ public class AddressServiceImpl implements AddressService {
         if (repository.findById(id).orElseThrow(() -> {
             logger.error("Address not found for ID:");
         return
-                new RuntimeException("Address not available for this id: " + id);
+                new OpenApiResourceNotFoundException("Address not available for this id: " + id);
         })!=null) {
             repository.deleteById(id);
-            logger.info("Deleted address succefully for ID:{}",id);
+            logger.info("Deleted address successfully for ID:{}",id);
             return "Deleted Successfully";
         }else {
             logger.warn("Could not deleted address for ID:{}",id);
@@ -78,6 +76,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public AddressDto add(AddressDto addressDto){
         logger.info("Adding new address:{}",addressDto);
+
         return addressMapper.toDto(repository.save(addressMapper.toEntity(addressDto)));
     }
     @Override

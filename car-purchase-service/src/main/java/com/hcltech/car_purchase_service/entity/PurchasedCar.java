@@ -34,7 +34,7 @@ public class PurchasedCar {
     @JoinColumn(name = "seller_id")
     private Person seller;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     private Car car;
 

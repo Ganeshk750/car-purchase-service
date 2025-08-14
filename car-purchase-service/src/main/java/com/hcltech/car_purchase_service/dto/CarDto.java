@@ -2,8 +2,14 @@ package com.hcltech.car_purchase_service.dto;
 
 import com.hcltech.car_purchase_service.entity.PurchasedCar;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Data
+@Setter
+@Getter
 public class CarDto {
     private Long id;
     private String make;           // e.g., Toyota, Honda
@@ -16,7 +22,7 @@ public class CarDto {
     private double price;          // asking price
     private boolean isAvailable=false;   // true if still for sale
     private String description;
-    private PurchasedCarDto purchasedCar;
+    private List<PurchasedCarDto> purchasedCar;
 
 }
 

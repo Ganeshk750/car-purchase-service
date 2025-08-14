@@ -8,10 +8,10 @@ import org.mapstruct.Mapping;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface AddressMappers {
-    @Mapping(source = "personId",target = "person.id")
+public interface AddressMapper {
+    @Mapping(target = "person.id", source = "personId")
     Address toEntity(AddressDto addressDto);
-    @Mapping(source = "person.id",target = "personId")
+    @Mapping(target = "personId", source = "person.id")
     AddressDto toDto(Address address);
     List<AddressDto>toDtoList(List<Address> addressList);
 }
